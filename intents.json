@@ -1,0 +1,296 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hello",
+        "Hey",
+        "Good morning",
+        "Good afternoon",
+        "Good evening",
+        "Is anyone there",
+        "Hello assistant",
+        "Hey chatbot"
+      ],
+      "responses": [
+        "Hello! How can I help you?",
+        "Hi! What can I do for you?",
+        "Hello! Feel free to ask me anything."
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "Goodbye",
+        "See you",
+        "See you later",
+        "I have to go",
+        "Talk to you later",
+        "Exit",
+        "Bye chatbot"
+      ],
+      "responses": [
+        "Goodbye! Have a great day.",
+        "See you later!",
+        "Thank you for chatting with me."
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thank you",
+        "Thanks",
+        "Thanks a lot",
+        "Thank you so much",
+        "I appreciate your help",
+        "That was helpful"
+      ],
+      "responses": [
+        "You're welcome!",
+        "Happy to help!",
+        "Anytime! Let me know if you need anything else."
+      ]
+    },
+    {
+      "tag": "about_college",
+      "patterns": [
+        "Tell me about the college",
+        "What is this college",
+        "Tell me about the university",
+        "Give me information about the college",
+        "What do you know about the college",
+        "Tell me about the campus"
+      ],
+      "responses": [
+        "This chatbot provides information about the college, including courses, admissions, facilities and student services."
+      ]
+    },
+    {
+      "tag": "admission",
+      "patterns": [
+        "How can I apply",
+        "How do I get admission",
+        "Tell me about admission",
+        "What is the admission process",
+        "How can I get admission",
+        "Admission procedure",
+        "When does admission start"
+      ],
+      "responses": [
+        "Admission usually involves submitting an application, meeting eligibility requirements and completing the required selection process. Please check the official college website for current details."
+      ]
+    },
+    {
+      "tag": "courses",
+      "patterns": [
+        "What courses are available",
+        "Which courses do you offer",
+        "Tell me about the courses",
+        "What programs are available",
+        "What can I study here",
+        "Available degree programs",
+        "Courses offered"
+      ],
+      "responses": [
+        "The college offers undergraduate and postgraduate programs in several disciplines. Please check the official academic portal for the current list of programs."
+      ]
+    },
+    {
+      "tag": "fees",
+      "patterns": [
+        "What is the fee",
+        "How much is the tuition fee",
+        "Tell me about fees",
+        "What are the college fees",
+        "How much do I have to pay",
+        "Fee structure",
+        "Tuition fees"
+      ],
+      "responses": [
+        "The fee depends on the program and category. Please check the official fee structure for the latest information."
+      ]
+    },
+    {
+      "tag": "scholarship",
+      "patterns": [
+        "Are scholarships available",
+        "Tell me about scholarships",
+        "How can I get a scholarship",
+        "Does the college provide scholarships",
+        "Scholarship information",
+        "Who can apply for scholarship",
+        "Scholarships"
+      ],
+      "responses": [
+        "Scholarships may be available based on academic performance, eligibility criteria and other factors. Please check the scholarship portal for current opportunities."
+      ]
+    },
+    {
+      "tag": "working_hours",
+      "patterns": [
+        "What are the working hours",
+        "When is the college open",
+        "College timings",
+        "What time does the college open",
+        "What time does the college close",
+        "Office timings",
+        "Working hours"
+      ],
+      "responses": [
+        "The general working hours are usually during regular daytime hours. Please check the college office for exact timings."
+      ]
+    },
+    {
+      "tag": "location",
+      "patterns": [
+        "Where is the college",
+        "Where is the university located",
+        "What is the college location",
+        "How can I reach the college",
+        "College address",
+        "Where are you located",
+        "Location of the college"
+      ],
+      "responses": [
+        "The college is located on its main campus. Please check the official website or maps for the exact address and directions."
+      ]
+    },
+    {
+      "tag": "library",
+      "patterns": [
+        "Is there a library",
+        "Tell me about the library",
+        "When is the library open",
+        "Library timings",
+        "Does the college have a library",
+        "Where is the library",
+        "Library facilities"
+      ],
+      "responses": [
+        "Yes, the college library provides students with access to books, journals and other academic resources."
+      ]
+    },
+    {
+      "tag": "hostel",
+      "patterns": [
+        "Is hostel available",
+        "Tell me about hostel",
+        "Hostel facilities",
+        "Does the college provide hostel",
+        "How can I get hostel accommodation",
+        "Hostel information",
+        "Are hostels available"
+      ],
+      "responses": [
+        "Hostel facilities are available for eligible students. Please contact the hostel administration for availability and application details."
+      ]
+    },
+    {
+      "tag": "canteen",
+      "patterns": [
+        "Is there a canteen",
+        "Where is the canteen",
+        "Tell me about the canteen",
+        "Canteen facilities",
+        "Does the college have a cafeteria",
+        "Food facilities",
+        "Cafeteria"
+      ],
+      "responses": [
+        "Yes, the campus provides food and refreshment facilities for students."
+      ]
+    },
+    {
+      "tag": "transport",
+      "patterns": [
+        "Is college transport available",
+        "Does the college have buses",
+        "Tell me about transportation",
+        "College bus",
+        "Bus facilities",
+        "How can I travel to college",
+        "Transport facilities"
+      ],
+      "responses": [
+        "College transportation may be available on selected routes. Please contact the transport department for current routes and timings."
+      ]
+    },
+    {
+      "tag": "examination",
+      "patterns": [
+        "When are the exams",
+        "Tell me about examinations",
+        "Exam schedule",
+        "When will exams start",
+        "How can I check exam dates",
+        "Examination information",
+        "Semester exams"
+      ],
+      "responses": [
+        "Exam schedules are published by the academic administration. Please check the examination portal for the latest timetable."
+      ]
+    },
+    {
+      "tag": "results",
+      "patterns": [
+        "When will results come",
+        "How can I check my results",
+        "Where are the results",
+        "Result information",
+        "Semester results",
+        "Check my result",
+        "When are results announced"
+      ],
+      "responses": [
+        "Results are generally published through the student academic portal after evaluation is completed."
+      ]
+    },
+    {
+      "tag": "attendance",
+      "patterns": [
+        "How can I check attendance",
+        "What is the attendance requirement",
+        "Tell me about attendance",
+        "Attendance percentage",
+        "Where can I see attendance",
+        "Minimum attendance",
+        "Attendance rules"
+      ],
+      "responses": [
+        "You can usually check your attendance through the student portal. The required attendance percentage depends on the institution's academic regulations."
+      ]
+    },
+    {
+      "tag": "contact",
+      "patterns": [
+        "How can I contact the college",
+        "College contact number",
+        "Contact information",
+        "How do I contact administration",
+        "Give me contact details",
+        "Who should I contact",
+        "College phone number"
+      ],
+      "responses": [
+        "You can contact the college administration through the official contact information provided on the college website."
+      ]
+    },
+    {
+      "tag": "help",
+      "patterns": [
+        "Help me",
+        "What can you do",
+        "How can you help me",
+        "What questions can I ask",
+        "Help",
+        "I need assistance",
+        "What services do you provide"
+      ],
+      "responses": [
+        "I can answer questions about admissions, courses, fees, scholarships, library, hostel, transport, examinations and other college-related information."
+      ]
+    }
+  ]
+}

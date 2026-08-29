@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Voice AI College Assistant</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            background: white;
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #777;
+        }
+
+        .mic-section {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        #micButton {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: none;
+            background: #667eea;
+            color: white;
+            font-size: 42px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+            transition: 0.3s;
+        }
+
+        #micButton:hover {
+            transform: scale(1.08);
+        }
+
+        #micButton.listening {
+            background: #e74c3c;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.12);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        #status {
+            margin-top: 12px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .text-input {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        #messageInput {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        #messageInput:focus {
+            border-color: #667eea;
+        }
+
+        #sendButton {
+            padding: 15px 22px;
+            border: none;
+            border-radius: 12px;
+            background: #667eea;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #sendButton:hover {
+            background: #5568d9;
+        }
+
+        .card {
+            background: #f7f8fc;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .card h3 {
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        #recognizedText {
+            color: #333;
+            font-size: 18px;
+            min-height: 30px;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #eef1ff;
+            border-radius: 15px;
+        }
+
+        .result p {
+            margin: 8px 0;
+            color: #444;
+        }
+
+        .response {
+            margin-top: 15px;
+            padding: 18px;
+            background: white;
+            border-radius: 12px;
+            font-size: 18px;
+            color: #333;
+            border-left: 5px solid #667eea;
+        }
+
+        .confidence {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 13px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px 18px;
+            }
+
+            .header h1 {
+                font-size: 25px;
+            }
+
+            .text-input {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>🎓 Voice AI College Assistant</h1>
+            <p>Ask your question using voice or text</p>
+        </div>
+
+        <!-- Microphone -->
+        <div class="mic-section">
+
+            <button id="micButton">🎤</button>
+
+            <p id="status">
+                Click the microphone and start speaking
+            </p>
+
+        </div>
+
+        <!-- Text Input -->
+        <div class="text-input">
+
+            <input
+                type="text"
+                id="messageInput"
+                placeholder="Type your question here..."
+            >
+
+            <button id="sendButton">
+                Send
+            </button>
+
+        </div>
+
+        <!-- Recognized Speech -->
+        <div class="card">
+
+            <h3>📝 Recognized / Entered Text</h3>
+
+            <p id="recognizedText">
+                Your question will appear here...
+            </p>
+
+        </div>
+
+        <!-- Result -->
+        <div class="result">
+
+            <p>
+                <strong>🧠 Detected Intent:</strong>
+                <span id="intent">---</span>
+            </p>
+
+            <p>
+                <strong>📊 Confidence:</strong>
+                <span id="confidence" class="confidence">---</span>
+            </p>
+
+            <div class="response">
+
+                <strong>🤖 Chatbot:</strong>
+
+                <p id="response">
+                    Your chatbot response will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="footer">
+            Powered by Speech Recognition + LSTM Deep Learning
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const micButton = document.getElementById("micButton");
+
+        const statusText = document.getElementById("status");
+
+        const recognizedText =
+            document.getElementById("recognizedText");
+
+        const intentText =
+            document.getElementById("intent");
+
+        const confidenceText =
+            document.getElementById("confidence");
+
+        const responseText =
+            document.getElementById("response");
+
+        const messageInput =
+            document.getElementById("messageInput");
+
+        const sendButton =
+            document.getElementById("sendButton");
+
+
+        // Send message to Flask
+        async function sendToChatbot(message) {
+
+            if (!message.trim()) {
+                statusText.innerText =
+                    "Please enter or speak a question.";
+                return;
+            }
+
+            recognizedText.innerText = message;
+
+            statusText.innerText =
+                "🧠 Processing your question...";
+
+            try {
+
+                const response = await fetch("/predict", {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        message: message
+                    })
+
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+
+                    statusText.innerText = data.error;
+                    return;
+
+                }
+
+                intentText.innerText =
+                    data.intent;
+
+                confidenceText.innerText =
+                    data.confidence + "%";
+
+                responseText.innerText =
+                    data.response;
+
+                statusText.innerText =
+                    "✅ Response generated successfully.";
+
+            } catch (error) {
+
+                console.error(error);
+
+                statusText.innerText =
+                    "❌ Unable to connect to chatbot.";
+
+            }
+        }
+
+
+        // Text input
+        sendButton.addEventListener("click", () => {
+
+            const message =
+                messageInput.value.trim();
+
+            sendToChatbot(message);
+
+        });
+
+
+        // Press Enter to send
+        messageInput.addEventListener("keypress", (event) => {
+
+            if (event.key === "Enter") {
+
+                const message =
+                    messageInput.value.trim();
+
+                sendToChatbot(message);
+
+            }
+
+        });
+
+
+        // Speech Recognition
+        const SpeechRecognition =
+            window.SpeechRecognition ||
+            window.webkitSpeechRecognition;
+
+
+        if (!SpeechRecognition) {
+
+            statusText.innerText =
+                "Speech recognition is not supported in this browser.";
+
+            micButton.disabled = true;
+
+        } else {
+
+            const recognition =
+                new SpeechRecognition();
+
+            recognition.lang = "en-US";
+
+            recognition.continuous = false;
+
+            recognition.interimResults = false;
+
+
+            micButton.addEventListener("click", () => {
+
+                recognition.start();
+
+                micButton.classList.add("listening");
+
+                statusText.innerText =
+                    "🎙️ Listening... Speak now.";
+
+            });
+
+
+            recognition.onresult = (event) => {
+
+                const transcript =
+                    event.results[0][0].transcript;
+
+                sendToChatbot(transcript);
+
+            };
+
+
+            recognition.onend = () => {
+
+                micButton.classList.remove("listening");
+
+            };
+
+
+            recognition.onerror = (event) => {
+
+                micButton.classList.remove("listening");
+
+                statusText.innerText =
+                    "❌ Microphone error: " + event.error;
+
+            };
+
+        }
+
+    </script>
+
+</body>
+
+</html>
