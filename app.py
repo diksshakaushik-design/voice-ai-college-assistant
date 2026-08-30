@@ -1,4 +1,3 @@
-from flask import Flask, request, jsonify, render_template
 import tensorflow as tf
 import pickle
 import json
@@ -6,10 +5,9 @@ import random
 import numpy as np
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-app = Flask(__name__)
 
 # Load trained model
-model = tf.keras.models.load_model("chatbot_model.keras")
+model = tf.keras.models.load_model("chatbot_model_fixed.keras")
 
 # Load tokenizer
 with open("tokenizer.pkl", "rb") as file:
@@ -61,32 +59,3 @@ def get_response(message):
     return predicted_tag, confidence, response
 
 
-@app.route("/")
-def home():
-    return render_template("index.html")
-
-
-@app.route("/predict", methods=["POST"])
-def predict():
-
-    data = request.get_json()
-
-    message = data.get("message", "").strip()
-
-    if not message:
-        return jsonify({
-            "error": "Please provide a message."
-        })
-
-    intent, confidence, response = get_response(message)
-
-    return jsonify({
-        "message": message,
-        "intent": intent,
-        "confidence": round(confidence * 100, 2),
-        "response": response
-    })
-
-
-if __name__ == "__main__":
-    app.run(debug=True)

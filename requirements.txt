@@ -1,6 +1,7 @@
-Flask
+streamlit
 tensorflow
 numpy
-nltk
 scikit-learn
-gunicorn
+nltk
+SpeechRecognition
+gTTS
